@@ -15,7 +15,9 @@ function hello_package()
         println("Hello FinancialAccounting!")
 end
 
-export hello_package
+function what_is_x()
+    2
+end
 
 amortization_periods = Dict("yearly" => 1, 
                             "monthly" => 12) #"quarterly" => 4, "semi-annually" => 2
