@@ -20,20 +20,22 @@ export hello_package
 amortization_periods = Dict("yearly" => 1, 
                             "monthly" => 12) #"quarterly" => 4, "semi-annually" => 2
 
-function amortization(P::Union{Float64,Int64},
-                                i::Union{Float64,Int64},
-                                compound_frequency::String, 
-                                term_length::Int
-                            )
-        
+function amortization(x::Loan)
+
     # A = periodic payment amount
-    # P = remaining principal on the loan, subtracting any down payments
-    # i = periodic percentage rate (0 <= i <= 1)
+    # P = remaining principal on the loan (after any down payments)
+    P = x.principal_balance
+    
+    # i = periodic percentage rate; decimal (0 <= i <= 1)
+    i = x.interest_rate
+    
     # n = total number of payments
 
-    n = get(amortization_periods, compound_frequency, "NOT FOUND") * term_length
+    @assert 0 <= i <= 1 "Interest rate must be a decimal [0,1]"
 
-    if compound_frequency == "yearly"
+    n = get(amortization_periods, x.compound_frequency, "NOT FOUND") * x.loan_duration
+
+    if x.compound_frequency == "yearly"
         i = i
     else	
         i = i/12
