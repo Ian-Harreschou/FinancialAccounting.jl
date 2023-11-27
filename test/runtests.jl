@@ -2,5 +2,6 @@ using FinancialAccounting
 using Test
 
 @testset "FinancialAccounting.jl" begin
-    # Write your tests here.
+    @test FinancialAccounting.jl.hello_package() == "Hello FinancialAccounting!"
+    @test FinancialAccounting.jl.hello_package() != "Hello World!"
 end

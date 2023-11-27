@@ -1,8 +1,21 @@
 # This file contains functions that pertain to fixed-term loans (not including credit cards)
 
+mutable struct Loan 
+	
+	# custom type "Loan" that includes principal balance (less any down payments), the interest rate, frequency of componding, and loan duration
+	
+	principal_balance::Union{Float64,Int64}
+	interest_rate::Union{Float64,Int64} # 0 <= i <= 1
+	compound_frequency::String
+	loan_duration::Int # years
+	
+end
+
 function hello_package()
         println("Hello FinancialAccounting!")
 end
+
+export hello_package
 
 amortization_periods = Dict("yearly" => 1, 
                             "monthly" => 12) #"quarterly" => 4, "semi-annually" => 2
