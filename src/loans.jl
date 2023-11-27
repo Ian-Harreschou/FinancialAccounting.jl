@@ -1,8 +1,8 @@
 # This file contains functions that pertain to loans
 
 amortization_periods = Dict("yearly" => 1, 
-								"semi-annually" => 2, 
-							) #"quarterly" => 4, "monthly" => 12
+                            "monthly" => 12 
+							) #"quarterly" => 4, "semi-annually" => 2
 
 function amortization(P::Union{Float64,Int64},
     i::Union{Float64,Int64},
