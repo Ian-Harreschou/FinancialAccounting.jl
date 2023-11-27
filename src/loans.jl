@@ -2,9 +2,7 @@
 
 amortization_periods = Dict("yearly" => 1, 
 								"semi-annually" => 2, 
-								"quarterly" => 4,
-								"monthly" => 12, 
-								)
+							) #"quarterly" => 4, "monthly" => 12
 
 function amortization(P::Union{Float64,Int64},
     i::Union{Float64,Int64},
@@ -21,7 +19,7 @@ n = get(amortization_periods, compound_frequency, "NOT FOUND") * term_length
 
 if compound_frequency == "yearly"
 i = i
-else	
+elseif	compound_frequency == "monthly"
 i = i/12
 end
 
