@@ -12,7 +12,7 @@ mutable struct Loan
 end
 
 function hello_package()
-        println("Hello FinancialAccounting!")
+        return "Hello FinancialAccounting!"
 end
 
 function what_is_x()
